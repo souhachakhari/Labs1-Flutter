@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart'; // Import dotenv
 import 'screens/home_screen.dart';
 import 'screens/notes_screen.dart';
 
-void main() {
+Future<void> main() async {
+  // S'assurer que Flutter est initialisé avant le chargement du .env
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Charger les variables d'environnement depuis le fichier .env
+  await dotenv.load(fileName: ".env");
+
+  // Lancer l'application
   runApp(NotesApp());
 }
 
